@@ -19,5 +19,9 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+::selection {
+  background-color: #ffa7e4;
+  color: #ffffff;
+}
 </style>
