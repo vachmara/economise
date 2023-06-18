@@ -9,6 +9,7 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/color-mode": "^3.2.0",
     "core-js": "^3.19.3",
     "nuxt": "^2.15.8",
     "nuxt-vue-multiselect": "^1.0.4",

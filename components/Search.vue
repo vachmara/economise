@@ -21,18 +21,24 @@
         id="ingredients"
         placeholder="Renseignes les ingrédients dans ton frigo ou ton placard"
         open-direction="bottom"
+        :loading="isLoading"
         :options="options"
         :multiple="true"
         :searchable="true"
         :internal-search="true"
         :clear-on-select="false"
         :close-on-select="false"
+        :limit-text="limitText"
         :options-limit="300"
         :limit="10"
         :max-height="200"
         :show-no-results="false"
         :hide-selected="true"
-      />
+      >
+        <template slot="clear">
+          <div class="multiselect__clear" v-if="values.length" @mousedown.prevent.stop="clearAll()">Reset</div>
+        </template>
+      </multiselect>
     </div>
     
     <button
@@ -52,6 +58,7 @@ import Ingredients from "~/assets/ingredients.json";
 export default {
   data() {
     return {
+      isLoading: null,
       values: ["Pomme de terre"],
       options: Ingredients.options,
       MINIMUM_INGREDIENTS: 4,
@@ -60,6 +67,9 @@ export default {
   methods: {
     clearAll() {
       this.values = [];
+    },
+    limitText (count) {
+      return `et ${count} autres ingrédients`
     },
     generateRecipes() {
       console.log(this.values);
@@ -88,6 +98,16 @@ export default {
   min-height: 30px;
 }
 
+.multiselect__clear {
+    position: absolute;
+    right: 41px;
+    height: 40px;
+    width: 40px;
+    display: block;
+    cursor: pointer;
+    z-index: 2;
+}
+
 #progress_bar > div {
   transition: width 0.5s ease-in-out;
 }
@@ -103,4 +123,6 @@ export default {
   transform: translateX(-50%);
   bottom: 10px;
 }
+
+
 </style> 
