@@ -36,16 +36,15 @@
         :hide-selected="true"
       >
         <template slot="clear">
-          <div class="multiselect__clear" v-if="values.length" @mousedown.prevent.stop="clearAll()">Reset</div>
+          <b class="multiselect__clear" v-if="values.length" @mousedown.prevent.stop="clearAll()">Reset</b>
         </template>
       </multiselect>
     </div>
     
     <button
       id="generate"
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      :class="`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${values.length < MINIMUM_INGREDIENTS ? 'opacity-50 cursor-not-allowed' : ''}`"
       @click="generateRecipes"
-      :disabled="values.length < MINIMUM_INGREDIENTS"
     >
       Générer des recettes
     </button>
@@ -102,10 +101,16 @@ export default {
     position: absolute;
     right: 41px;
     height: 40px;
+    display: flex !important;
+    align-items: center;
     width: 40px;
     display: block;
     cursor: pointer;
     z-index: 2;
+}
+
+.multiselect__clear:hover{
+  cursor: pointer;
 }
 
 #progress_bar > div {
