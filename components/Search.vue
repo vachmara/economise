@@ -8,7 +8,7 @@
       class="w-full bg-gray-200 h-4 rounded-full dark:bg-gray-700"
     >
       <div
-        class="bg-blue-600 text-xs font-medium h-4 text-blue-100 text-center p-0.5 leading-none rounded-full"
+        class="bg-primary text-xs font-medium h-4 text-blue-100 text-center p-0.5 leading-none rounded-full"
         :style="`width: ${percentage()}%`"
       >
         {{ percentage() ? `${percentage()}%` : "" }}
@@ -41,9 +41,14 @@
       </multiselect>
     </div>
     
+    <div class="flex justify-center align-center mt-4">
+      <RecipeCard :recipe="exampleRecipe" isSkeleton />
+      <RecipeCard :recipe="exampleRecipe" isSkeleton />
+    </div>
+
     <button
       id="generate"
-      :class="`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${values.length < MINIMUM_INGREDIENTS ? 'opacity-50 cursor-not-allowed' : ''}`"
+      :class="`bg-primary text-white font-bold py-2 px-4 rounded ${values.length < MINIMUM_INGREDIENTS ? 'opacity-50 cursor-not-allowed' : ''}`"
       @click="generateRecipes"
     >
       Générer des recettes
@@ -53,6 +58,8 @@
 
 <script>
 import Ingredients from "~/assets/ingredients.json";
+import RecipeExample from "~/assets/recipe_example.json";
+import RecipeCard from "./RecipeCard.vue";
 
 export default {
   data() {
@@ -60,8 +67,12 @@ export default {
       isLoading: null,
       values: ["Pomme de terre"],
       options: Ingredients.options,
+      exampleRecipe: RecipeExample,
       MINIMUM_INGREDIENTS: 4,
     };
+  },
+  components: {
+    RecipeCard,
   },
   methods: {
     clearAll() {
@@ -111,6 +122,11 @@ export default {
 
 .multiselect__clear:hover{
   cursor: pointer;
+}
+
+.multiselect__tag, .multiselect__option--highlight, .multiselect__option--highlight::after {
+  background-color: #61e2e7 !important;
+  color: #ffffff;
 }
 
 #progress_bar > div {

@@ -1,0 +1,22 @@
+{
+    "title": "Exemple de recette",
+    "preparation_time": "15 minutes",
+    "cooking_time": "30 minutes",
+    "people_quantity": "4 personnes",
+    "stars": "4",
+    "ingredients": [
+      {
+        "name": "Ingrédient 1",
+        "quantity": "100g"
+      },
+      {
+        "name": "Ingrédient 2",
+        "quantity": "2 pièces"
+      }
+    ],
+    "instructions": [
+       "Préchauffez votre four à 180°C.",
+       "Mélangez les ingrédients dans un saladier."
+    ],
+    "notes": "Vous pouvez ajouter un assaisonnement de votre choix pour personnaliser la recette."
+}
