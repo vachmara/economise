@@ -21,25 +21,30 @@
         id="ingredients"
         placeholder="Renseignes les ingrédients dans ton frigo ou ton placard"
         open-direction="bottom"
+        :loading="isLoading"
         :options="options"
         :multiple="true"
         :searchable="true"
         :internal-search="true"
         :clear-on-select="false"
         :close-on-select="false"
+        :limit-text="limitText"
         :options-limit="300"
         :limit="10"
         :max-height="200"
         :show-no-results="false"
         :hide-selected="true"
-      />
+      >
+        <template slot="clear">
+          <b class="multiselect__clear" v-if="values.length" @mousedown.prevent.stop="clearAll()">Reset</b>
+        </template>
+      </multiselect>
     </div>
     
     <button
       id="generate"
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+      :class="`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ${values.length < MINIMUM_INGREDIENTS ? 'opacity-50 cursor-not-allowed' : ''}`"
       @click="generateRecipes"
-      :disabled="values.length < MINIMUM_INGREDIENTS"
     >
       Générer des recettes
     </button>
@@ -52,6 +57,7 @@ import Ingredients from "~/assets/ingredients.json";
 export default {
   data() {
     return {
+      isLoading: null,
       values: ["Pomme de terre"],
       options: Ingredients.options,
       MINIMUM_INGREDIENTS: 4,
@@ -60,6 +66,9 @@ export default {
   methods: {
     clearAll() {
       this.values = [];
+    },
+    limitText (count) {
+      return `et ${count} autres ingrédients`
     },
     generateRecipes() {
       console.log(this.values);
@@ -88,6 +97,22 @@ export default {
   min-height: 30px;
 }
 
+.multiselect__clear {
+    position: absolute;
+    right: 41px;
+    height: 40px;
+    display: flex !important;
+    align-items: center;
+    width: 40px;
+    display: block;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.multiselect__clear:hover{
+  cursor: pointer;
+}
+
 #progress_bar > div {
   transition: width 0.5s ease-in-out;
 }
@@ -103,4 +128,6 @@ export default {
   transform: translateX(-50%);
   bottom: 10px;
 }
+
+
 </style> 

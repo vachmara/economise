@@ -38,10 +38,15 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/color-mode',
     'nuxt-vue-multiselect',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  colorMode: {
+    classSuffix: ''
   }
 }
