@@ -44,17 +44,17 @@
     
     <carousel :perPage="1" :navigationEnabled="true" :autoplay="true" :loop="true" :autoplayTimeout="10000" navigationNextLabel="⟩" navigationPrevLabel="⟨" class="mt-3">
       <slide>
-        <RecipeCard :recipe="exampleRecipe" :isSkeleton="isLoading" :isDisabled="values.length < MINIMUM_INGREDIENTS" />
+        <RecipeCard :recipe="recipes[0]" :isSkeleton="isLoading" :isDisabled="values.length < MINIMUM_INGREDIENTS" />
       </slide>
       <slide>
-        <RecipeCard :recipe="exampleRecipe" :isSkeleton="isLoading" :isDisabled="values.length < MINIMUM_INGREDIENTS" />
+        <RecipeCard :recipe="recipes[1]" :isSkeleton="isLoading" :isDisabled="values.length < MINIMUM_INGREDIENTS" />
       </slide>
     </carousel>
 
     <div class="w-full flex align-center justify-center mt-4">
       <button
         id="generate"
-        :class="`w-1/2 h-10 text-white font-bold py-2 px-4 rounded bg-primary ${values.length < MINIMUM_INGREDIENTS ? 'opacity-50 cursor-not-allowed' : ''}`"
+        :class="`w-1/2 h-10 font-bold py-2 px-4 rounded bg-primary ${values.length < MINIMUM_INGREDIENTS ? 'opacity-50 cursor-not-allowed' : ''}`"
         @click="generateRecipes"
       >
         <div v-if="isLoading" class="stage p-4">
@@ -68,18 +68,28 @@
 </template>
 
 <script>
+// Notification
+import Swal from 'sweetalert2/dist/sweetalert2.js'
+import 'sweetalert2/src/sweetalert2.scss'
+
+// Assets
 import Ingredients from "~/assets/ingredients.json";
 import RecipeExample from "~/assets/recipe_example.json";
+
+// Components
 import RecipeCard from "./RecipeCard.vue";
 import { Carousel, Slide } from 'vue-carousel';
 
 export default {
   data() {
     return {
-      isLoading: true,
+      isLoading: null,
       values: ["Pomme de terre"],
       options: Ingredients.options,
-      exampleRecipe: RecipeExample,
+      recipes: [
+        RecipeExample,
+        RecipeExample
+      ],
       MINIMUM_INGREDIENTS: 4,
     };
   },
@@ -110,6 +120,35 @@ export default {
       );
       return percentage > 100 ? 100 : percentage;
     },
+    async generateRecipes(){
+      this.isLoading = true;
+      
+      try{
+        const { data } = await this.$axios.post("locahost:3000/generateRecipes", {
+          ingredients: this.values
+        })
+        console.log(data)
+        this.recipes = data        
+
+        Swal.fire({
+          title: 'Recettes générées !',
+          text: 'Voici deux recettes générées aléatoirement',
+          icon: 'success',
+          confirmButtonText: 'Cool !'
+        })
+      }
+      catch(e){
+        Swal.fire({
+          title: 'Oops...',
+          text: 'Une erreur est survenue, veuillez réessayer plus tard',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        })
+      }
+      finally{
+        this.isLoading = false;
+      }
+    }
   },
 };
 </script>
@@ -158,12 +197,28 @@ export default {
   min-height: 70vh;
 }
 
+#generate {
+  color: rgb(56, 56, 56);
+  transition: color 0.2s ease-in-out;
+}
+
+#generate:hover {
+  color: rgb(31, 31, 31);
+  transition: color 0.2s ease-in-out;
+}
+
 .stage {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
     overflow: hidden;
+}
+
+.swal2-confirm{
+  background-color: #61e2e7 !important;
+  border-color: #61e2e7 !important;
+  color: rgb(56, 56, 56) !important;
 }
 
 </style> 
