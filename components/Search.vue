@@ -22,6 +22,7 @@
         placeholder="Renseignes les ingrédients dans ton frigo ou ton placard"
         open-direction="bottom"
         :loading="isLoading"
+        :disabled="isLoading"
         :options="options"
         :multiple="true"
         :searchable="true"
@@ -53,11 +54,15 @@
     <div class="w-full flex align-center justify-center mt-4">
       <button
         id="generate"
-        :class="`bg-primary text-white font-bold py-2 px-4 rounded ${values.length < MINIMUM_INGREDIENTS ? 'opacity-50 cursor-not-allowed' : ''}`"
+        :class="`w-1/2 h-10 text-white font-bold py-2 px-4 rounded bg-primary ${values.length < MINIMUM_INGREDIENTS ? 'opacity-50 cursor-not-allowed' : ''}`"
         @click="generateRecipes"
       >
-        Générer des recettes
+        <div v-if="isLoading" class="stage p-4">
+           <div class="dot-typing" />
+        </div>
+        <span v-else>Générer des recettes</span>
       </button>
+      
     </div>
   </div>
 </template>
@@ -71,7 +76,7 @@ import { Carousel, Slide } from 'vue-carousel';
 export default {
   data() {
     return {
-      isLoading: null,
+      isLoading: true,
       values: ["Pomme de terre"],
       options: Ingredients.options,
       exampleRecipe: RecipeExample,
@@ -111,7 +116,13 @@ export default {
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
 
-<style>
+<style lang="scss">
+@use 'three-dots' with (
+  $dot-color: #fff,
+  $dot-width: 10px,
+  $dot-height: 10px,
+); 
+
 .multiselect__input,
 .multiselect__single {
   min-height: 30px;
@@ -145,6 +156,14 @@ export default {
 #card {
   position: relative;
   min-height: 70vh;
+}
+
+.stage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
 }
 
 </style> 
