@@ -41,18 +41,24 @@
       </multiselect>
     </div>
     
-    <div class="flex justify-center align-center mt-4">
-      <RecipeCard :recipe="exampleRecipe" isSkeleton />
-      <RecipeCard :recipe="exampleRecipe" isSkeleton />
-    </div>
+    <carousel :perPage="1" :navigationEnabled="true" :autoplay="true" :loop="true" :autoplayTimeout="10000" navigationNextLabel="⟩" navigationPrevLabel="⟨" class="mt-3">
+      <slide>
+        <RecipeCard :recipe="exampleRecipe" :isSkeleton="isLoading" :isDisabled="values.length < MINIMUM_INGREDIENTS" />
+      </slide>
+      <slide>
+        <RecipeCard :recipe="exampleRecipe" :isSkeleton="isLoading" :isDisabled="values.length < MINIMUM_INGREDIENTS" />
+      </slide>
+    </carousel>
 
-    <button
-      id="generate"
-      :class="`bg-primary text-white font-bold py-2 px-4 rounded ${values.length < MINIMUM_INGREDIENTS ? 'opacity-50 cursor-not-allowed' : ''}`"
-      @click="generateRecipes"
-    >
-      Générer des recettes
-    </button>
+    <div class="w-full flex align-center justify-center mt-4">
+      <button
+        id="generate"
+        :class="`bg-primary text-white font-bold py-2 px-4 rounded ${values.length < MINIMUM_INGREDIENTS ? 'opacity-50 cursor-not-allowed' : ''}`"
+        @click="generateRecipes"
+      >
+        Générer des recettes
+      </button>
+    </div>
   </div>
 </template>
 
@@ -60,6 +66,7 @@
 import Ingredients from "~/assets/ingredients.json";
 import RecipeExample from "~/assets/recipe_example.json";
 import RecipeCard from "./RecipeCard.vue";
+import { Carousel, Slide } from 'vue-carousel';
 
 export default {
   data() {
@@ -73,6 +80,8 @@ export default {
   },
   components: {
     RecipeCard,
+    Carousel,
+    Slide,
   },
   methods: {
     clearAll() {
@@ -135,15 +144,7 @@ export default {
 
 #card {
   position: relative;
-  height: 70vh;
+  min-height: 70vh;
 }
-
-#generate{
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 10px;
-}
-
 
 </style> 
