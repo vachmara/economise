@@ -44,11 +44,8 @@
     </div>
     
     <carousel :perPage="1" :navigationEnabled="true" :autoplay="true" :loop="true" :autoplayTimeout="10000" navigationNextLabel="⟩" navigationPrevLabel="⟨" class="mt-3">
-      <slide>
-        <RecipeCard :recipe="recipes[0]" :isSkeleton="isLoading" :isDisabled="values.length < MINIMUM_INGREDIENTS" />
-      </slide>
-      <slide>
-        <RecipeCard :recipe="recipes[1]" :isSkeleton="isLoading" :isDisabled="values.length < MINIMUM_INGREDIENTS" />
+      <slide v-for="(recipe, index) in recipes" :key="index">
+        <RecipeCard :recipe="recipe" :isSkeleton="isLoading" :isDisabled="values.length < MINIMUM_INGREDIENTS" />
       </slide>
     </carousel>
 
@@ -61,7 +58,7 @@
         <div v-if="isLoading" class="stage p-4">
            <div class="dot-typing" />
         </div>
-        <span v-else>Générer des recettes</span>
+        <span v-else>Générer une recette</span>
       </button>
       
     </div>
@@ -88,7 +85,6 @@ export default {
       values: ["Pomme de terre"],
       options: Ingredients.options,
       recipes: [
-        RecipeExample,
         RecipeExample
       ],
       MINIMUM_INGREDIENTS: 4,
@@ -125,14 +121,18 @@ export default {
       this.isLoading = true;
       
       try{
-        const { data } = await this.$axios.post("/generateRecipes", {
+        const { data } = await this.$axios.post("/generateRecipe", {
           ingredients: this.values
         })
-        this.recipes = data.recipes;
+
+        if(this.recipes.length > 0 && this.recipes[0] === RecipeExample)
+          this.recipes.splice(0, 1);
+        
+        this.recipes.push(data.recipe);
 
         Swal.fire({
-          title: 'Recettes générées !',
-          text: 'Voici deux recettes générées aléatoirement',
+          title: 'Recette générée.',
+          text: 'Voici votre recette générée aléatoirement grâce à chatGPT.',
           icon: 'success',
           confirmButtonText: 'Cool !'
         })

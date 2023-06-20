@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -57,6 +59,6 @@ export default {
   },
 
   axios: {
-    baseURL: 'http://localhost:3333/api',
+    baseURL: process.env.LOCAL ? 'http://localhost:3333/api' : 'https://economise-api.onrender.com/api',
   }
 }
