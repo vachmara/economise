@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
@@ -39,14 +41,24 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/color-mode',
+    '@nuxtjs/axios',
     'nuxt-vue-multiselect',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extend(config, { isDev, isClient }) {
+      config.node = {
+        fs: 'empty'
+      }
+    }
   },
 
   colorMode: {
     classSuffix: ''
+  },
+
+  axios: {
+    baseURL: process.env.LOCAL ? 'http://localhost:3333/api' : 'https://economise-api.onrender.com/api',
   }
 }

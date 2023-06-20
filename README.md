@@ -1,4 +1,4 @@
-# Économise
+# Économise Frontend
 
 ## Introduction
 
@@ -18,9 +18,9 @@
 
 Nous accueillons les contributions de tous ! Si vous avez une suggestion ou une fonctionnalité que vous aimeriez voir ajoutée, n'hésitez pas à ouvrir une issue ou à soumettre une pull request.
 
-## Installation
+## Installation Frontend
 
-Pour installer et exécuter Économise localement, vous pouvez suivre ces étapes :
+Pour installer et exécuter le front d'Économise localement, vous pouvez suivre ces étapes :
 
 ```bash
 # install dependencies
