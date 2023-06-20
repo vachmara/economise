@@ -8,16 +8,25 @@ export default {
   head: {
     title: 'Économise !',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'fr'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      { hid: 'description', name: 'description', content: "Économise est un outil intelligent qui vous aide à optimiser vos courses alimentaires et à économiser de l'argent. En utilisant l'IA, Économise génère des recettes basées sur les ingrédients que vous avez déjà dans votre frigo et votre placard. Plus besoin de gaspiller de l'argent sur des ingrédients supplémentaires ou de laisser des aliments se gâter parce que vous ne savez pas quoi en faire." },
+      { name: 'format-detection', content: 'telephone=no' },
+      { name: 'robots', content: 'index, follow' }, 
+      { name: 'keywords', content: 'optimisation des courses, économiser de l\'argent, recettes alimentaires, gaspillage alimentaire' },
+      { name: 'author', content: 'Valentin Chmara' }, 
+      { name: 'og:title', content: 'Économise' },
+      { name: 'og:description', content: "Économise est un outil intelligent qui vous aide à optimiser vos courses alimentaires et à économiser de l'argent." },
+      { name: 'og:image', content: 'https://vachmara.github.io/economise/logo.png' },
+      { name: 'og:url', content: 'https://vachmara.github.io/economise/' }, // URL du site pour les réseaux sociaux
+      { name: 'twitter:card', content: 'summary_large_image' }, // Type de carte Twitter pour l'affichage
+      { name: 'twitter:site', content: '@ValentinChmara' }, // Compte Twitter associé au site
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
 
