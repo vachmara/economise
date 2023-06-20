@@ -54,5 +54,9 @@ export default {
 
   colorMode: {
     classSuffix: ''
+  },
+
+  axios: {
+    baseURL: 'http://localhost:3333/api',
   }
 }

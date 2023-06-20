@@ -16,30 +16,31 @@
     </div>
     <div class="mt-4">
       <label class="typo__label">Choisi tes ingrédients :</label>
-      <multiselect
-        v-model="values"
-        id="ingredients"
-        placeholder="Renseignes les ingrédients dans ton frigo ou ton placard"
-        open-direction="bottom"
-        :loading="isLoading"
-        :disabled="isLoading"
-        :options="options"
-        :multiple="true"
-        :searchable="true"
-        :internal-search="true"
-        :clear-on-select="false"
-        :close-on-select="false"
-        :limit-text="limitText"
-        :options-limit="300"
-        :limit="10"
-        :max-height="200"
-        :show-no-results="false"
-        :hide-selected="true"
-      >
-        <template slot="clear">
-          <b class="multiselect__clear" v-if="values.length" @mousedown.prevent.stop="clearAll()">Reset</b>
-        </template>
-      </multiselect>
+      <div id="ingredients">
+        <multiselect
+          v-model="values"
+          placeholder="Renseignes les ingrédients dans ton frigo ou ton placard"
+          open-direction="bottom"
+          :loading="isLoading"
+          :disabled="isLoading"
+          :options="options"
+          :multiple="true"
+          :searchable="true"
+          :internal-search="true"
+          :clear-on-select="false"
+          :close-on-select="false"
+          :limit-text="limitText"
+          :options-limit="300"
+          :limit="10"
+          :max-height="200"
+          :show-no-results="false"
+          :hide-selected="true"
+        >
+          <template slot="clear">
+            <b class="multiselect__clear" v-if="values.length" @mousedown.prevent.stop="clearAll()">Reset</b>
+          </template>
+        </multiselect>
+      </div>
     </div>
     
     <carousel :perPage="1" :navigationEnabled="true" :autoplay="true" :loop="true" :autoplayTimeout="10000" navigationNextLabel="⟩" navigationPrevLabel="⟨" class="mt-3">
@@ -55,7 +56,7 @@
       <button
         id="generate"
         :class="`w-1/2 h-10 font-bold py-2 px-4 rounded bg-primary ${values.length < MINIMUM_INGREDIENTS ? 'opacity-50 cursor-not-allowed' : ''}`"
-        @click="generateRecipes"
+        @click="values.length < MINIMUM_INGREDIENTS ? null : generateRecipes()"
       >
         <div v-if="isLoading" class="stage p-4">
            <div class="dot-typing" />
@@ -124,11 +125,10 @@ export default {
       this.isLoading = true;
       
       try{
-        const { data } = await this.$axios.post("locahost:3000/generateRecipes", {
+        const { data } = await this.$axios.post("/generateRecipes", {
           ingredients: this.values
         })
-        console.log(data)
-        this.recipes = data        
+        this.recipes = data.recipes;
 
         Swal.fire({
           title: 'Recettes générées !',
@@ -138,6 +138,7 @@ export default {
         })
       }
       catch(e){
+        console.log(e)
         Swal.fire({
           title: 'Oops...',
           text: 'Une erreur est survenue, veuillez réessayer plus tard',
@@ -190,6 +191,10 @@ export default {
 
 #progress_bar > div {
   transition: width 0.5s ease-in-out;
+}
+
+#ingredients{
+  min-height: 80px;
 }
 
 #card {
