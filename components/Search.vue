@@ -1,7 +1,7 @@
 <template>
   <div class="w-full mx-auto" id="card">
     <div class="mb-5 text-lg font-medium dark:text-white text-center w-full">
-      🎉 Économise et optimise tes courses avec notre outil. 🎉
+      🎉 Adieu Uber Eats et les pizzas ! Découvrez Econonmise, l'outil qui génère des recettes à partir des ingrédients que vous avez chez vous ! 🎉
     </div>
     <div
       id="progress_bar"
