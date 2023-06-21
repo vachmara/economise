@@ -19,7 +19,7 @@ export default {
       { name: 'keywords', content: 'optimisation des courses, économiser de l\'argent, recettes alimentaires, gaspillage alimentaire' },
       { name: 'author', content: 'Valentin Chmara' }, 
       { name: 'og:title', content: 'Économise' },
-      { name: 'og:description', content: "Adieu Uber Eats et les pizzas ! Découvrez Économise, l'outil qui génère des recettes à partir des ingrédients que vous avez chez vous." },
+      { name: 'og:description', content: "Adieu Uber Eats et les pizzas ! Génère une recette en fonction de ce que tu as dans ton frigo." },
       { name: 'og:image', content: 'https://vachmara.github.io/economise/logo.png' },
       { name: 'og:url', content: 'https://vachmara.github.io/economise/' }, // URL du site pour les réseaux sociaux
       { name: 'twitter:card', content: 'summary_large_image' }, // Type de carte Twitter pour l'affichage

@@ -1,7 +1,10 @@
 <template>
   <div class="w-full mx-auto" id="card">
     <div class="mb-5 text-lg font-medium dark:text-white text-center w-full">
-      🎉 Adieu Uber Eats et les pizzas ! Découvrez Econonmise, l'outil qui génère des recettes à partir des ingrédients que vous avez chez vous ! 🎉
+      Adieu Uber Eats et les pizzas ! 🍽️🎉 
+    </div>
+    <div class="mb-5 text-sm dark:text-white text-center w-full">
+       Génère une recette en fonction de ce que tu as dans ton frigo. 🥕🥦🍅
     </div>
     <div
       id="progress_bar"
