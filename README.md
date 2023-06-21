@@ -1,26 +1,30 @@
-# Économise Frontend
+# Économise  Frontend
+
+[![Github Pages](https://img.shields.io/badge/github%20pages-121013?style=for-the-badge&logo=github&logoColor=white)](vachmara.github.io/economise/)
+![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?style=for-the-badge&logo=openai&logoColor=white)
+[![Licence](https://img.shields.io/github/license/Ileriayo/markdown-badges?style=for-the-badge)](./LICENSE)
 
 ## Introduction
 
-Économise est un outil intelligent qui vous aide à optimiser vos courses alimentaires et à économiser de l'argent. En utilisant l'IA, Économise génère des recettes basées sur les ingrédients que vous avez déjà dans votre frigo et votre placard. Plus besoin de gaspiller de l'argent sur des ingrédients supplémentaires ou de laisser des aliments se gâter parce que vous ne savez pas quoi en faire. 
+Économise is an intelligent tool that helps you optimize your food shopping and save money. Using AI, Économise generates recipes based on the ingredients you already have in your fridge and cupboard. No more wasting money on extra ingredients or letting food spoil because you don't know what to do with it. 
 
-## Valeur ajoutée
+## Added value
 
-- **Économies** : Économise vous aide à utiliser les ingrédients que vous avez déjà, réduisant ainsi le besoin d'acheter des ingrédients supplémentaires.
-- **Optimisation** : En générant des recettes basées sur vos ingrédients existants, Économise vous aide à optimiser vos courses et à réduire le gaspillage alimentaire.
-- **Simplicité** : Avec une interface utilisateur simple et minimaliste, Économise est facile à utiliser. En un seul clic, vous pouvez obtenir une liste de recettes.
+- Savings**: Saving helps you use the ingredients you already have, reducing the need to buy additional ingredients.
+- Optimization**: By generating recipes based on your existing ingredients, Économise helps you optimize your shopping and reduce food waste.
+- Simplicity**: With a simple, minimalist user interface, Économise is easy to use. With just one click, you can obtain a list of recipes.
 
-## Licence
+## License
 
-Économise est un projet open source sous licence [MIT](LICENSE).
+Économise is an open source project licensed under [MIT](LICENSE).
 
-## Comment contribuer
+## How to contribute
 
-Nous accueillons les contributions de tous ! Si vous avez une suggestion ou une fonctionnalité que vous aimeriez voir ajoutée, n'hésitez pas à ouvrir une issue ou à soumettre une pull request.
+We welcome contributions from everyone! If you have a suggestion or feature you'd like to see added, feel free to open an issue or submit a pull request.
 
-## Installation Frontend
+## Frontend installation
 
-Pour installer et exécuter le front d'Économise localement, vous pouvez suivre ces étapes :
+To install and run the Economise frontend locally, you can follow these steps:
 
 ```bash
 # install dependencies
@@ -39,8 +43,8 @@ $ npm run generate
 
 ## Contact
 
-Si vous avez des questions ou des commentaires, n'hésitez pas à nous contacter. Vous pouvez nous envoyer un email à [notre adresse email](mailto:valentinchmara@gmail.com).
+If you have any questions or comments, please do not hesitate to contact us. You can send us an email at [our email address](mailto:valentinchmara@gmail.com).
 
 ---
 
-Merci d'utiliser Économise ! Nous espérons que notre outil vous aidera à économiser de l'argent et à optimiser vos courses alimentaires.
+Thank you for using Economise! We hope our tool will help you save money and optimize your food shopping.
