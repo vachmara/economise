@@ -13,7 +13,7 @@ export default {
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: "Adieu Uber Eats et les pizzas ! Découvrez Économise, l'outil qui génère des recettes à partir des ingrédients que vous avez chez vous. En utilisant l'IA, Économise génère des recettes basées sur les ingrédients que vous avez déjà dans votre frigo et votre placard. Plus besoin de gaspiller de l'argent sur des ingrédients supplémentaires ou de laisser des aliments se gâter parce que vous ne savez pas quoi en faire." },
+      { hid: 'description', name: 'description', content: "Adieu Uber Eats et les pizzas ! Découvrez Économise, l'outil qui génère des recettes à partir des ingrédients que vous avez chez vous. En utilisant l'IA, Économise génère des recettes basées sur les ingrédients que vous avez déjà dans votre frigo et votre placard. Plus besoin de gaspiller de l'argent sur des ingrédients supplémentaires ou de laisser des aliments s'abîmer parce que vous ne savez pas quoi en faire." },
       { name: 'format-detection', content: 'telephone=no' },
       { name: 'robots', content: 'index, follow' }, 
       { name: 'keywords', content: 'optimisation des courses, économiser de l\'argent, recettes alimentaires, gaspillage alimentaire' },
@@ -27,7 +27,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: './favicon.ico' }
-    ]
+    ],
+    
+
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -51,6 +53,8 @@ export default {
   modules: [
     '@nuxtjs/color-mode',
     '@nuxtjs/axios',
+    '@nuxtjs/gtm',
+    'nuxt-smartlook',
     'nuxt-vue-multiselect',
   ],
 
@@ -69,5 +73,14 @@ export default {
 
   axios: {
     baseURL: process.env.LOCAL ? 'http://localhost:3333/api' : 'https://economise-api.onrender.com/api',
-  }
+  },
+
+  gtm: {
+    id: 'GTM-NZNX79J'
+  },
+
+  smartlook: {
+		id: "3655d5ef29d3003aa1face04c83ca47628212c73",
+		enabled: process.env.LOCAL,
+	}
 }
