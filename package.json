@@ -11,8 +11,10 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/color-mode": "^3.2.0",
+    "@nuxtjs/gtm": "^2.4.0",
     "core-js": "^3.19.3",
     "nuxt": "^2.15.8",
+    "nuxt-smartlook": "^0.0.1",
     "nuxt-vue-multiselect": "^1.0.4",
     "openai": "^3.3.0",
     "sweetalert2": "^11.7.12",
