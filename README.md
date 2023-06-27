@@ -10,9 +10,9 @@
 
 ## Added value
 
-- Savings**: Saving helps you use the ingredients you already have, reducing the need to buy additional ingredients.
-- Optimization**: By generating recipes based on your existing ingredients, Économise helps you optimize your shopping and reduce food waste.
-- Simplicity**: With a simple, minimalist user interface, Économise is easy to use. With just one click, you can obtain a list of recipes.
+- **Savings**: Saving helps you use the ingredients you already have, reducing the need to buy additional ingredients.
+- **Optimization**: By generating recipes based on your existing ingredients, Économise helps you optimize your shopping and reduce food waste.
+- **Simplicity**: With a simple, minimalist user interface, Économise is easy to use. With just one click, you can obtain a list of recipes.
 
 ## License
 
